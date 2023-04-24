@@ -7,6 +7,8 @@ import TempChart from "@components/TempChart";
 import { getClient } from "apollo-client";
 import fetchWeatherQuery from "qraphql/queries/fetchWeatherQueries";
 
+export const revalidate = 60
+
 type Props = {
   params: {
     city: string;
