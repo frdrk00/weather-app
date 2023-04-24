@@ -1,6 +1,7 @@
 import CalloutCard from "@components/CalloutCard";
 import InformationPanel from "@components/InformationPanel";
 import StatCard from "@components/StatCard";
+import TempChart from "@components/TempChart";
 import { getClient } from "apollo-client";
 import fetchWeatherQuery from "qraphql/queries/fetchWeatherQueries";
 
@@ -100,7 +101,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
         <hr className="mb-5" />
 
         <hr className="space-y-3" />        
-                {/* TempChart */}
+                <TempChart results={results} />
                 {/* RainChart */}
                 {/* HumidityChart */}
 
