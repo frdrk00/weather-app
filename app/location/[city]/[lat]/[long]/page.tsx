@@ -1,4 +1,5 @@
 import CalloutCard from "@components/CalloutCard";
+import HumidityChart from "@components/HumidityChart";
 import InformationPanel from "@components/InformationPanel";
 import RainChart from "@components/RainChart";
 import StatCard from "@components/StatCard";
@@ -104,8 +105,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
         <hr className="space-y-3" />        
                 <TempChart results={results} />
                 <RainChart results={results} />
-                {/* HumidityChart */}
-
+                <HumidityChart results={results} />
       </div>
     </div>
   );
