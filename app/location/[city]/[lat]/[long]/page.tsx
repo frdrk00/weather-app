@@ -1,3 +1,4 @@
+import CalloutCard from "@components/CalloutCard";
 import { getClient } from "apollo-client";
 import fetchWeatherQuery from "qraphql/queries/fetchWeatherQueries";
 
@@ -41,12 +42,14 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
             </p>
           </div>
 
-                <div>
-                  {/* <CalloutCard /> */}
-                </div>
+          <div>
+            <CalloutCard message="This is where GPT-4 Summary will go!" />
+          </div>
 
+          <div>
+            
+          </div>
         </div>
-
       </div>
     </div>
   );
