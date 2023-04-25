@@ -5,9 +5,11 @@ import RainChart from "@components/RainChart";
 import StatCard from "@components/StatCard";
 import TempChart from "@components/TempChart";
 import { getClient } from "apollo-client";
+import cleanData from "lib/cleanData";
+import getBasePath from "lib/getBasePath";
 import fetchWeatherQuery from "qraphql/queries/fetchWeatherQueries";
 
-export const revalidate = 60
+export const revalidate = 60;
 
 type Props = {
   params: {
@@ -32,16 +34,26 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
 
   const results: Root = data.myQuery;
 
-  console.log(results);
+/*   const dataToSend = cleanData(results, city);
+
+  const res = await fetch(`${getBasePath()}/api/getWeatherSummary`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      weatherData: dataToSend,
+    }),
+  });
+
+  const GPTdata = await res.json();
+  const { content } = GPTdata; */
+
+  
 
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
-      <InformationPanel 
-        city={city}
-        long={long}
-        lat={lat}
-        results={results}
-      />
+      <InformationPanel city={city} long={long} lat={lat} results={results} />
 
       <div className="flex-1 p-5 lg:p-10">
         <div className="p-5">
@@ -55,7 +67,7 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
           </div>
 
           <div className="m-2 mb-10">
-            <CalloutCard message="This is where GPT-4 Summary will go!" />
+            <CalloutCard message="This is where GTP-4 Summary will go!" />
           </div>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 m-2">
@@ -104,10 +116,10 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
 
         <hr className="mb-5" />
 
-        <hr className="space-y-3" />        
-                <TempChart results={results} />
-                <RainChart results={results} />
-                <HumidityChart results={results} />
+        <hr className="space-y-3" />
+        <TempChart results={results} />
+        <RainChart results={results} />
+        <HumidityChart results={results} />
       </div>
     </div>
   );
